@@ -1,4 +1,4 @@
-class Tunr < Sinatra::Base
+class MH5 < Sinatra::Base
 
   # RESTful Artist Controller Actions
   # index
