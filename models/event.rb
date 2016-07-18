@@ -1,2 +1,2 @@
-class Artist < ActiveRecord::Base
+class Event < ActiveRecord::Base
 end
