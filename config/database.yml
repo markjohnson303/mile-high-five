@@ -2,4 +2,4 @@ development:
   adapter: postgresql
   database: MH5_development
 production:
- url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
