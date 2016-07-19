@@ -7,6 +7,6 @@ require './models/event'
 
 # Controllers
 require './app'
-require './controllers/artists_controller'
+require './controllers/event_controller'
 
 run MH5

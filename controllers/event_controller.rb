@@ -14,13 +14,11 @@ class MH5 < Sinatra::Base
   end
 
   # create
-  post '/artists' do
-    @artist = Artist.new(params[:artist])
-    if @artist.save
-      redirect("/artists/#{@artist.id}")
-    else
-      erb(:"artists/new")
-    end
+  post '/events' do
+    request.body.rewind
+    request_body = request.body.read
+    parsed = JSON.parse(request_body)
+    Event.create(parsed)
   end
 
   # show
