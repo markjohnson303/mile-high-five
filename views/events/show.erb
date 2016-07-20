@@ -2,29 +2,29 @@
 	.big-logo-row {
 		background-image: url("<%= @event.image_url %>")	
 	</style>
-			<a name="content"> </a>
+	<a name="content"> </a>
 	<div class="container-fluid home-thing pad100 bg<%= @event.position %>">
 		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2">
-			<div class="col-sm-8">
-			<h2><strong><%= @event.title %></strong></h2>
-			<h3><%= @event.description %></h3>
-			</div>
-			<div class="col-sm-4">
-			<div id="map"></div>
-			    <script>
-			      var map;
-			      function initMap() {
-			        map = new google.maps.Map(document.getElementById('map'), {
-			          center: {lat: -34.397, lng: 150.644},
-			          zoom: 8
-			        });
-			      }
-			    </script>
-			    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"
-			    async defer></script>
+			<div class="col-sm-6 col-sm-offset-3">
+				<h2><strong><%= @event.title %></strong></h2>
+				<h3><%= @event.description %></h3>
+				<div class="map_container">
+				    <div id="map_canvas" class="map_canvas"><div id="map"></div></div>
+				</div>
+				<script>
+					var map;
+					function initMap() {
+						map = new google.maps.Map(document.getElementById('map'), {
+							center: {lat: -34.397, lng: 150.644},
+							zoom: 8
+						});
+					}
+				</script>
+				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"
+					async defer></script>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	
+
