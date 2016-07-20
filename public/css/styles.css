@@ -3,24 +3,102 @@ html, body {height: 100%;}
 /* *********************************
    5 Things Containers
   ********************************** */
+.home-thing{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 .bg1 {
-  background-color: #3FFFFC;
+  background-color: #76e2ff;
 }
 
 .bg2 {
-  background-color: #69FEEE;
+  background-color: #98e1e7;
 }
 
 .bg3 {
-  background-color: #92FEDF;
+  background-color: #bbe1cf;
 }
 
 .bg4 {
-  background-color: #BCFDD1;
+  background-color: #dde0b7;
 }
 
 .bg5 {
-  background-color: #E5FCC2;
+  background-color: #ffdf9f;
+}
+
+/* *********************************
+   Buttons
+  ********************************** */
+
+/* Button 4 */
+.btn-spec {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 25px 80px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn-spec:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+/* Pseudo elements for icons */
+.btn-spec:before,
+.icon-heart:after,
+.icon-star:after,
+.icon-plus:after,
+.icon-file:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-6 {
+  color: #262626;
+  background: #fff;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+
+.btn-6:active {
+  top: 2px;
+}
+
+.btn-6c {
+  border: 4px solid #fff;
+  border-radius: 60px;
+}
+
+.btn-6c:hover {
+  background: transparent;
+  color: #fff;
 }
 
 /* *********************************
@@ -95,7 +173,7 @@ li a.active:after {
 }
 
 .small-logo {
-  color: white;
+  color: #262626;
   font-size: 2.5em;
   padding-bottom: 2px;
 }
@@ -108,6 +186,7 @@ li a.active:after {
   background-size: cover;
   height: 100%;
   width: 100%;
+  opacity: 1.0;
 
 }
 .big-logo-row .big-logo-container {
@@ -117,11 +196,13 @@ li a.active:after {
   font-size: 4em;
   margin: 0;
   padding: 0 0 15px 0;
+  opacity: 1.0;
 }
 
 .big-logo-img{
   height: 300px;
   margin: 0 auto 0 auto;
+  opacity: 1.0;
 }
 
 .small-logo-img{
@@ -131,22 +212,22 @@ li a.active:after {
 
 @media (min-width: 400px) {
   .big-logo-row h1 {
-    font-size: 4.5em;
+    font-size: 3.5em;
   }
 }
 @media (min-width: 440px) {
   .big-logo-row h1 {
-    font-size: 5.5em;
+    font-size: 4.5em;
   }
 }
 @media (min-width: 500px) {
   .big-logo-row h1 {
-    font-size: 6.5em;
+    font-size: 4.5em;
   }
 }
 @media (min-width: 630px) {
   .big-logo-row h1 {
-    font-size: 7.5em;
+    font-size: 7em;
   }
 }
 @media (min-width: 768px) {

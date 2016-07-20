@@ -1,12 +1,32 @@
+<% @event.each do |event| %>
+     
+<div class="container-fluid home-thing bg<%= event.position %>">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 text-center">
+			<h2><%= event.title %></h2>
+			<% if event.event_date? %>
+			<h3><%= event.human_location %> | <%= event.event_date.strftime('%A, %b %e, %l:%M %p') %></h3>
+			<% else %>
+			<h3><%= event.human_location %> | Any Time</h3>
+			<% end %>
+			<h4>There's not much water here, but this is one of the best ways to experience the water that we do have.</h4>
+			<center>
+			<button class="btn-spec btn-6 btn-6c">do this thing</button>
+			</center>
+		</div>
+	</div>
+</div>
 
+<% end %>
 
+<!--
 <div class="container-fluid bg1" id="thing1">
 	<div class="row">
 		<div class="col-sm-3 col-sm-offset-3">
 			<h2>Drink a beer by the river</h2>
 		</div>
 		<div class="col-sm-3 text-right">
-			<p>Any Time</p>
+			<3h>Any Time</h3>
 		</div>
 
 	</div>
@@ -48,3 +68,5 @@
 	<p>Sequi facilis ea dolor asperiores quibusdam eveniet optio corporis et accusantium voluptatem architecto quis iste recusandae molestias dolorem soluta ex blanditiis illo impedit laborum iusto? Iure sapiente eos molestiae est?</p>
 	<p>Numquam delectus recusandae nesciunt rem itaque harum corporis maxime hic iste molestias adipisci excepturi ullam libero necessitatibus cum eum modi minus obcaecati est nemo quia velit earum perferendis consectetur porro?</p>
 </div>
+
+-->
