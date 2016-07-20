@@ -6,7 +6,7 @@
 
 <% @event.each do |event| %>
      
-<div class="container-fluid home-thing bg<%= event.position %>">
+<div class="container-fluid pad100 bg<%= event.position %>">
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 text-center">
 			<h2><strong><%= event.title %></strong></h2>
@@ -19,7 +19,7 @@
 			<h4><%= event.description %></h4>
 			<br/>
 			<center>
-			<a href="/events/<%= event.id %>"><button class="btn-spec btn-6 btn-6c">do this thing</button></a>
+			<a href="/events/<%= event.id %>#content"><button class="btn-spec btn-6 btn-6c">do this thing</button></a>
 			</center>
 		</div>
 	</div>
