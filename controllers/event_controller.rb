@@ -7,12 +7,6 @@ class MH5 < Sinatra::Base
     erb(:"events/index")
   end
 
-  # new
-  get '/artists/new' do
-    @artist = Artist.new
-    erb(:"artists/new")
-  end
-
   # create
   post '/events' do
     request.body.rewind
@@ -22,9 +16,9 @@ class MH5 < Sinatra::Base
   end
 
   # show
-  get '/artists/:id' do
-    @artist = Artist.find(params[:id])
-    erb(:"artists/show")
+  get '/events/:id' do
+    @event = Event.find(params[:id])
+    erb(:"events/show")
   end
 
   # edit

@@ -3,8 +3,9 @@ html, body {height: 100%;}
 /* *********************************
    5 Things Containers
   ********************************** */
+
+
 .home-thing{
-  padding-top: 100px;
   padding-bottom: 100px;
 }
 
@@ -51,6 +52,7 @@ html, body {height: 100%;}
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
+  opacity: .5;  
 }
 
 .btn-spec:after {
@@ -182,12 +184,10 @@ li a.active:after {
            Big Logo
   ********************************** */
 .big-logo-row {
-  background-image: url("/images/ferriswheel.jpg") ;
   background-size: cover;
   height: 100%;
   width: 100%;
   opacity: 1.0;
-
 }
 .big-logo-row .big-logo-container {
   padding-top: 50px;
@@ -196,13 +196,11 @@ li a.active:after {
   font-size: 4em;
   margin: 0;
   padding: 0 0 15px 0;
-  opacity: 1.0;
 }
 
 .big-logo-img{
   height: 300px;
   margin: 0 auto 0 auto;
-  opacity: 1.0;
 }
 
 .small-logo-img{

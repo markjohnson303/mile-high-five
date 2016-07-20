@@ -1,10 +1,8 @@
-<h2><%= @artist.name %></h2>
-<h3><%= @artist.nationality %></h3>
-<h3><%= @artist.instrument %></h3>
-<h3><%= @artist.home_address %></h3>
-<img src="<%= @artist.photo_url %>" height="300" width="300">
-<ul>
-  <% @artist.songs.each do |song| %>
-    <li><%= song.title %></li>
-  <% end %>
-</ul>
+<style type="text/css">
+	.big-logo-row {
+  background-image: url(<%= @event.img_url %>);	
+</style>
+
+<h2><%= @event.title %></h2>
+
+<h2><%= @event.description %></h2>

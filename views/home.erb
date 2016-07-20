@@ -1,23 +1,32 @@
+<style type="text/css">
+	.big-logo-row {
+  background-image: url("/images/ferriswheel.jpg")	
+</style>
+
+
 <% @event.each do |event| %>
      
 <div class="container-fluid home-thing bg<%= event.position %>">
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 text-center">
-			<h2><%= event.title %></h2>
+			<h2><strong><%= event.title %></strong></h2>
 			<% if event.event_date? %>
 			<h3><%= event.human_location %> | <%= event.event_date.strftime('%A, %b %e, %l:%M %p') %></h3>
 			<% else %>
 			<h3><%= event.human_location %> | Any Time</h3>
 			<% end %>
-			<h4>There's not much water here, but this is one of the best ways to experience the water that we do have.</h4>
+			<br/>
+			<h4><%= event.description %></h4>
+			<br/>
 			<center>
-			<button class="btn-spec btn-6 btn-6c">do this thing</button>
+			<a href="/events/<%= event.id %>"><button class="btn-spec btn-6 btn-6c">do this thing</button></a>
 			</center>
 		</div>
 	</div>
 </div>
 
 <% end %>
+
 
 <!--
 <div class="container-fluid bg1" id="thing1">
