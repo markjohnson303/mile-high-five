@@ -3,9 +3,8 @@
   background-image: url("/images/ferriswheel.jpg")	
 </style>
 
-
 <% @event.each do |event| %>
-     
+<a name="<%= event.position %>"> </a>     
 <div class="container-fluid pad100 bg<%= event.position %>">
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 text-center">

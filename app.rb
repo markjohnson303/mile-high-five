@@ -2,7 +2,8 @@ class MH5 < Sinatra::Base
 
   # General route actions
   get '/' do
-  	@event = Event.all.sort_by &:position
+  	@weeknumber = Time.now.strftime('%W')
+  	@event = Event.where(week: @weeknumber).sort_by &:position
     erb :home
   end
 

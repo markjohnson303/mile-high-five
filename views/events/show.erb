@@ -7,7 +7,18 @@
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
 				<h2><strong><%= @event.title %></strong></h2>
-				<h3><%= @event.description %></h3>
+				<% if @event.event_date? %>
+			<h3><%= @event.human_location %> | $<%= @event.cost %> | <%= @event.event_date.strftime('%A, %b %e, %l:%M %p') %></h3>
+			<% else %>
+			<h3><%= @event.human_location %> | $<%= @event.cost %> | Any Time</h3>
+			<% end %> 
+				<p class="lead"><%= @event.description %></p>
+				<p><%= @event.long_desc.gsub(/\n/, '<br/>') %></p>
+				<center>
+				<a href="<%= @event.link %>" target="_blank"><button class="btn-spec btn-6 btn-6c">check it out</button></a>
+				<a href="/#<%= @event.position %>"><button class="btn-spec btn-6 btn-6c">back to the five</button></a>
+				</center>
+				<br/>
 				<div class="map_container">
 				    <div id="map_canvas" class="map_canvas"><div id="map"></div></div>
 				</div>
@@ -18,6 +29,11 @@
 							center: {lat: -34.397, lng: 150.644},
 							zoom: 8
 						});
+						var marker = new google.maps.Marker({
+						          position: myLatLng,
+						          map: map,
+						          title: 'Hello World!'
+						        });
 					}
 				</script>
 				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"

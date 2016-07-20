@@ -75,6 +75,7 @@ html, body {height: 100%;}
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   opacity: .5;  
+  width: 350px;
 }
 
 .btn-spec:after {
