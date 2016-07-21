@@ -10,11 +10,13 @@ class MH5 < Sinatra::Base
   end
 
   # create
-  post '/events' do
-    request.body.rewind
-    request_body = request.body.read
-    parsed = JSON.parse(request_body)
-    Event.create(parsed)
+  post '/admin' do
+    @event = Event.new(params[:event])
+    if @event.save
+      redirect("/admin")
+    else
+      p "submission error"
+    end
   end
 
   # show
