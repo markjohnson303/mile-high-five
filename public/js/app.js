@@ -35,8 +35,14 @@ $(window).scroll(function() {
     $('.navbar').css({"box-shadow": "none"});
   }
   
-  
-  
+});
+
+$('form').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
 });
 
 // This example displays an address form, using the autocomplete feature
@@ -78,24 +84,16 @@ $(window).scroll(function() {
         console.log("fill in");
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
-        console.log(componentForm);
-        for (var component in componentForm) {
-          document.getElementById(component).value = '';
-          document.getElementById(component).disabled = false;
-        }
+        console.log(place);
+
         document.getElementById("lat").value = place.geometry.location.lat();
+        document.getElementById("lng").value = place.geometry.location.lng();
+        document.getElementById("placename").value = place.name;
         console.log(place.geometry.location.lat());
 
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-          var addressType = place.address_components[i].types[0];
-          if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            console.log(val);
-            document.getElementById(addressType).value = val;
-          }
-        }
+
 
       }
 

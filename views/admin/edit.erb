@@ -1,0 +1,82 @@
+<style type="text/css">
+	.navbar, .big-logo-row {
+		display: none;	}
+	</style>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+
+<h2><center>Edit</center></h2>
+
+<form action="/admin/event/<%= "#{@event.id}" %>" method="post" role="form" id="edit-event-form">
+	<div class="form-group">
+		<label for="title">Title:</label>
+		<input type="text" class="form-control" id="title" name="event[title]" value="<%= "#{@event.title}" %>">
+	</div>
+	<div class="form-group">
+		<label for="week">Week:</label>
+		<input type="text" class="form-control" id="week" name="event[week]" value="<%= "#{@event.week}" %>">
+	</div>
+	<div class="form-group">
+		<label for="title">Position:</label>
+		<input type="text" class="form-control" id="position" name="event[position]" value="<%= "#{@event.position}" %>">
+	</div>
+	<div class="form-group" id="locationField">
+		<label for="autocomplete">Location:</label>
+		<input class="form-control" id="autocomplete" onFocus="geolocate()">
+	</div>
+	<div class="form-group">
+		<label for="placename">Place Name:</label>
+		<input type="text" class="form-control" id="placename" name="event[human_location]" value="<%= "#{@event.human_location}" %>">
+	</div>
+	<div class="form-group">
+		<label for="lat">Lattitude:</label>
+		<input type="text" class="form-control" id="lat" name="event[lat]" value="<%= "#{@event.lat}" %>">
+	</div>
+	<div class="form-group">
+		<label for="lng">Longitude:</label>
+		<input type="text" class="form-control" id="lng" name="event[lng]" value="<%= "#{@event.lng}" %>">
+	</div>
+	<div class="form-group">
+		<label for="link">Link:</label>
+		<input class="form-control" id="link" name="event[link]" value="<%= "#{@event.link}" %>">
+	</div>
+	<div class="form-group">
+		<label for="image-link">Image Link:</label>
+		<input class="form-control" id="image-link" name="event[image_url]" value="<%= "#{@event.image_url}" %>">
+	</div>
+	<div class="form-group">
+		<label for="date">Date:</label>
+		<div class='input-group date' id='date'>
+			<input type='text' class="form-control" name="event[event_date]" value="<%= "#{@event.event_date}" %>">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function () {
+			$('#date').datetimepicker();
+		});
+	</script>
+	<div class="form-group">
+		<label for="shortdesc">Short Description:</label>
+		<textarea class="form-control" id="shortdesc" value="<%= "#{@event.description}" %>"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="longdesc">Long Description:</label>
+		<textarea class="form-control" id="longdesc" value="<%= "#{@event.long_desc}" %>"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="cost">Cost:</label>
+		<input class="form-control" id="cost" value="<%= "#{@event.cost}" %>">
+	</div>
+
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<input type="submit" value="Create" class="btn btn-primary"></input>
+</form>
+
+</div>
+</div>
+</div>

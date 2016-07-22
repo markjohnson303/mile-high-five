@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720184451) do
+ActiveRecord::Schema.define(version: 20160721210617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20160720184451) do
     t.integer  "week"
     t.integer  "position"
     t.string   "long_desc"
+    t.float    "lat"
+    t.float    "lng"
   end
 
 end

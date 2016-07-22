@@ -19,35 +19,31 @@ class MH5 < Sinatra::Base
     end
   end
 
-  # show
-  get '/events/:id' do
-    @event = Event.find(params[:id])
-    erb(:"events/show")
-  end
 
   # edit
-  get '/artists/:id/edit' do
-    @artist = Artist.find(params[:id])
-    erb(:"artists/edit")
+  get '/admin/event/:id/edit' do
+    @event = Event.find(params[:id])
+    erb(:"admin/edit")
   end
 
+
   # update
-  put '/artists/:id' do
-    @artist = Artist.find(params[:id])
-    if @artist.update_attributes(params[:artist])
-      redirect("/artists/#{artist.id}")
+  post '/admin/event/:id' do
+    @event = Event.find(params[:id])
+    if @event.update_attributes(params[:event])
+      redirect("/admin")
     else
-      erb(:"artists/edit")
+      erb(:"admin")
     end
   end
 
   # delete
-  delete '/artists/:id/delete' do
-    @artist = Artist.find(params[:id])
-    if @artist.destroy
-      redirect('/artists')
+  delete '/event/:id/delete' do
+    @event = Event.find(params[:id])
+    if @event.destroy
+      redirect('/admin')
     else
-      redirect("/artists/#{@artist.id}")
+      redirect("/admin")
     end
   end
 

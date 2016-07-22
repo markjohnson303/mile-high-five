@@ -16,6 +16,7 @@
 				<p><%= @event.long_desc.gsub(/\n/, '<br/>') %></p>
 				<center>
 					<a href="<%= @event.link %>" target="_blank"><button class="btn-spec btn-6 btn-6c">check it out</button></a>
+					<a href="/#<%= @event.position %>"><button class="btn-spec btn-6 btn-6c">back to the five</button></a>
 				</center>
 				<br/>
 				<div class="map_container">
@@ -25,11 +26,11 @@
 					var map;
 					function initMap() {
 						map = new google.maps.Map(document.getElementById('map'), {
-							center: {lat: -34.397, lng: 150.644},
-							zoom: 8
+							center: {lat: <%= @event.lat %>, lng:  <%= @event.lng %>},
+							zoom: 16
 						});
 						var marker = new google.maps.Marker({
-							position: myLatLng,
+							position: {lat: <%= @event.lat %>, lng:  <%= @event.lng %>},
 							map: map,
 							title: 'Hello World!'
 						});
@@ -37,10 +38,6 @@
 				</script>
 				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"
 					async defer></script>
-					<br/>
-					<center>
-				<a href="/#<%= @event.position %>"><button class="btn-spec btn-6 btn-6c">back to the five</button></a>
-				</center>
 			</div>
 		</div>
 	</div>

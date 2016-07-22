@@ -1,6 +1,6 @@
 <style type="text/css">
 	.navbar, .big-logo-row {
-		display: none;	
+		display: none;	}
 	</style>
 
 
@@ -11,13 +11,13 @@
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
 				<center>
-				<h1>Mile High Five Admin</h1>
-				<h3>The current week is <%= @weeknumber %></h3>
-				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-				  + new thing
-				</button>
-				<br>
-				<br>
+					<h1>Mile High Five Admin</h1>
+					<h3>The current week is <%= @weeknumber %></h3>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+						+ new thing
+					</button>
+					<br>
+					<br>
 				</center>
 				<% @eventweeks.sort.each do |week| %>
 				<div class="panel panel-default">
@@ -31,6 +31,7 @@
 							<tr>
 								<th>Event Name</th>
 								<th>Edit</th>
+								<th>Delete</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -39,120 +40,100 @@
 								<td>
 									<p><%= event.title %></p>
 								</td>
-								<td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-							</tr>
-							<% end %>
-						</tbody>
-					</table>
+								<td><a href="/admin/event/<%= event.id %>/edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+								</td>
+								<td><a href="/admin/event/<%= event.id %>/delete" method="post"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+								</td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+					<% end %>
 				</div>
-				<% end %>
 			</div>
 		</div>
 	</div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-		<form action="/admin" method="post" role="form">
-			<div class="form-group">
-				<label for="title">Title:</label>
- 				<input type="text" class="form-control" id="title" name="event[title]">
-			</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Add a new thing</h4>
+				</div>
+				<div class="modal-body">
+					<form action="/admin" method="post" role="form" id="create-event-form">
 						<div class="form-group">
-							<label for="title">Week:</label>
-			 				<input type="text" class="form-control" id="week" name="event[week]">
+							<label for="title">Title:</label>
+							<input type="text" class="form-control" id="title" name="event[title]">
 						</div>
-									<div class="form-group">
-										<label for="title">Position:</label>
-						 				<input type="text" class="form-control" id="position" name="event[position]">
-									</div>
-			<div class="form-group">
-				<label for="link">Link:</label>
-				<input class="form-control" id="link">
+						<div class="form-group">
+							<label for="week">Week:</label>
+							<input type="text" class="form-control" id="week" name="event[week]">
+						</div>
+						<div class="form-group">
+							<label for="title">Position:</label>
+							<input type="text" class="form-control" id="position" name="event[position]">
+						</div>
+						<div class="form-group" id="locationField">
+							<label for="autocomplete">Location:</label>
+							<input class="form-control" id="autocomplete" onFocus="geolocate()">
+						</div>
+						<div class="form-group">
+							<label for="placename">Place Name:</label>
+							<input type="text" class="form-control" id="placename" name="event[human_location]">
+						</div>
+						<div class="form-group">
+							<label for="lat">Lattitude:</label>
+							<input type="text" class="form-control" id="lat" name="event[lat]">
+						</div>
+						<div class="form-group">
+							<label for="lng">Longitude:</label>
+							<input type="text" class="form-control" id="lng" name="event[lng]">
+						</div>
+						<div class="form-group">
+							<label for="link">Link:</label>
+							<input class="form-control" id="link" name="event[link]">
+						</div>
+						<div class="form-group">
+							<label for="image-link">Image Link:</label>
+							<input class="form-control" id="image-link" name="event[image_url]">
+						</div>
+						<div class="form-group">
+							<label for="date">Date:</label>
+							<div class='input-group date' id='date'>
+								<input type='text' class="form-control" name="event[event_date]"/>
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<script type="text/javascript">
+							$(function () {
+								$('#date').datetimepicker();
+							});
+						</script>
+						<div class="form-group">
+							<label for="shortdesc">Short Description:</label>
+							<textarea class="form-control" id="shortdesc"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="longdesc">Long Description:</label>
+							<textarea class="form-control" id="longdesc"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="cost">Cost:</label>
+							<input class="form-control" id="cost">
+						</div>
+
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<input type="submit" value="Create" class="btn btn-primary"></input>
+					</form>
+				</div>
 			</div>
-			    <div class="form-group">
-			    	<label for="date">Date:</label>
-			        <div class='input-group date' id='date'>
-			            <input type='text' class="form-control" />
-			            <span class="input-group-addon">
-			                <span class="glyphicon glyphicon-calendar"></span>
-			            </span>
-			        </div>
-			    </div>
-			<script type="text/javascript">
-			    $(function () {
-			        $('#date').datetimepicker();
-			    });
-			</script>
-			<div class="form-group">
-				<label for="location">Location:</label>
-				<input class="form-control" id="location">
-			</div>
-			<div class="form-group">
-				<label for="shortdesc">Short Description:</label>
-				<textarea class="form-control" id="shortdesc"></textarea>
-			</div>
-			<div class="form-group">
-				<label for="longdesc">Long Description:</label>
-				<textarea class="form-control" id="longdesc"></textarea>
-			</div>
-			<div class="form-group">
-				<label for="cost">Cost:</label>
-				<input class="form-control" id="cost">
-			</div>
+		</div>
+	</div>
 
-        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        	<input type="submit" value="Create" class="btn btn-primary"></input>
-        </form>
-        <div id="locationField">
-      <input id="autocomplete" placeholder="Enter your address"
-             onFocus="geolocate()" type="text"></input>
-    </div>
-
-    <table id="address">
-      <tr>
-        <td class="label">Street address</td>
-        <td class="slimField"><input class="field" id="street_number"
-              disabled="true"></input></td>
-        <td class="wideField" colspan="2"><input class="field" id="route"
-              disabled="true"></input></td>
-      </tr>
-      <tr>
-        <td class="label">City</td>
-        <td class="wideField" colspan="3"><input class="field" id="locality"
-              disabled="true"></input></td>
-      </tr>
-      <tr>
-        <td class="label">State</td>
-        <td class="slimField"><input class="field"
-              id="administrative_area_level_1" disabled="true"></input></td>
-        <td class="label">Zip code</td>
-        <td class="wideField"><input class="field" id="postal_code"
-              disabled="true"></input></td>
-      </tr>
-      <tr>
-        <td class="label">Country</td>
-        <td class="wideField" colspan="3"><input class="field"
-              id="country" disabled="true"></input></td>
-      </tr>
-        <tr>
-        <td class="label">Lat</td>
-        <td class="wideField" colspan="3"><input class="field"
-              id="lat" disabled="true"></input></td>
-      </tr>
-    </table>
-      </div>
-    </div>
-  </div>
-  					<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&libraries=places&callback=initAutocomplete"
-        async defer></script>
-</div>
-
-
-
-
+	<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&libraries=places&callback=initAutocomplete"
+		async defer></script>
