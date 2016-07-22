@@ -20,28 +20,27 @@
 				</center>
 				<br/>
 
+				<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"
+					></script>
+
 				<script>
-					$( document ).ready(function() {
-					    var map;
-					    					function initMap() {
-					    						map = new google.maps.Map(document.getElementById('map'), {
-					    							center: {lat: <%= @event.lat %>, lng:  <%= @event.lng %>},
-					    							zoom: 16
-					    						});
-					    						var marker = new google.maps.Marker({
-					    							position: {lat: <%= @event.lat %>, lng:  <%= @event.lng %>},
-					    							map: map,
-					    							title: 'Hello World!'
-					    						});
-					    					}
-					});
-					
+					var map;
+					function initMap() {
+						map = new google.maps.Map(document.getElementById('map'), {
+							center: {lat: <%= @event.lat %>, lng:  <%= @event.lng %>},
+							zoom: 16
+						});
+						var marker = new google.maps.Marker({
+							position: {lat: <%= @event.lat %>, lng:  <%= @event.lng %>},
+							map: map,
+							title: 'Hello World!'
+						});
+					}
 				</script>
 				<div class="map_container">
 					<div id="map_canvas" class="map_canvas"><div id="map"></div></div>
 				</div>
-				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"
-					async defer></script>
+
 			</div>
 		</div>
 	</div>
