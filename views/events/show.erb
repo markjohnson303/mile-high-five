@@ -19,9 +19,7 @@
 					<a href="/#<%= @event.position %>"><button class="btn-spec btn-6 btn-6c">back to the five</button></a>
 				</center>
 				<br/>
-				<div class="map_container">
-					<div id="map_canvas" class="map_canvas"><div id="map"></div></div>
-				</div>
+
 				<script>
 					var map;
 					function initMap() {
@@ -36,6 +34,9 @@
 						});
 					}
 				</script>
+				<div class="map_container">
+					<div id="map_canvas" class="map_canvas"><div id="map"></div></div>
+				</div>
 				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"
 					async defer></script>
 			</div>
