@@ -21,6 +21,5 @@ class MH5 < Sinatra::Base
     erb(:"events/show")
   end
 
-  
 
 end
