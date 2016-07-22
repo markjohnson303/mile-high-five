@@ -20,10 +20,8 @@
 				</center>
 				<br/>
 
-				<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"
-					></script>
-
 				<script>
+
 					var map;
 					function initMap() {
 						map = new google.maps.Map(document.getElementById('map'), {
@@ -40,7 +38,8 @@
 				<div class="map_container">
 					<div id="map_canvas" class="map_canvas"><div id="map"></div></div>
 				</div>
-
+				<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MH5MAPSAPI'] %>&callback=initMap"
+					></script>
 			</div>
 		</div>
 	</div>
