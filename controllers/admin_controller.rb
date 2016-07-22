@@ -38,7 +38,7 @@ class MH5 < Sinatra::Base
   end
 
   # delete
-  delete '/event/:id/delete' do
+  delete 'admin/event/:id' do
     @event = Event.find(params[:id])
     if @event.destroy
       redirect('/admin')

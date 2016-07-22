@@ -1,6 +1,8 @@
 $( document ).ready(function() {
   console.log(document.getElementById('autocomplete'));
-        });
+  $(".delete").click(function(){ var id = $(this).closest("tr").data("id"); $.get("/admin/event/" + id, {_method: "delete"}); });
+  $(".delete").click(function(){ console.log("delete"); });
+});
 
 var navbarHeight = $('.navbar').height(); 
 
@@ -71,13 +73,13 @@ $('form').on('keyup keypress', function(e) {
         console.log("hello");
         console.log(document.getElementById('autocomplete'));
         autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-            {types: ['geocode', 'establishment']});
+          /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+          {types: ['geocode', 'establishment']});
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
         autocomplete.addListener('place_changed', fillInAddress);
-        });
+      });
       }
 
       function fillInAddress() {

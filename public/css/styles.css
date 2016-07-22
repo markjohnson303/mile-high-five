@@ -19,7 +19,7 @@ html, body {height: 100%;}
 }
 
 .pac-container {
-    z-index: 1051 !important;
+    z-index: 10000 !important;
 }
 
 #map {

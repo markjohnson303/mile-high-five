@@ -7,9 +7,5 @@ class MH5 < Sinatra::Base
     erb :home
   end
 
-  get '/about' do
-    erb :about
-  end
-
 end
 
