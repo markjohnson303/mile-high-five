@@ -2,10 +2,10 @@ class MH5 < Sinatra::Base
 
   # RESTful Artist Controller Actions
   # index
-  get '/events' do
-    @event = Event.all
-    erb(:"events/index")
-  end
+  # get '/events' do
+  #   @event = Event.all
+  #   erb(:"events/index")
+  # end
 
   # create
   post '/events' do

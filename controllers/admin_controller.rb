@@ -28,7 +28,7 @@ class MH5 < Sinatra::Base
 
 
   # update
-  post '/admin/event/:id' do
+  put '/admin/event/:id' do
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
       redirect("/admin")

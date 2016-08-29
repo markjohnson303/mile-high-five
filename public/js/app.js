@@ -1,7 +1,5 @@
 $( document ).ready(function() {
-  console.log(document.getElementById('autocomplete'));
   $(".delete").click(function(){ var id = $(this).closest("tr").data("id"); $.get("/admin/event/" + id, {_method: "delete"}); });
-  $(".delete").click(function(){ console.log("delete"); });
 });
 
 var navbarHeight = $('.navbar').height(); 
@@ -70,8 +68,6 @@ $('form').on('keyup keypress', function(e) {
         $( document ).ready(function() {
         // Create the autocomplete object, restricting the search to geographical
         // location types.
-        console.log("hello");
-        console.log(document.getElementById('autocomplete'));
         autocomplete = new google.maps.places.Autocomplete(
           /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
           {types: ['geocode', 'establishment']});
@@ -83,16 +79,12 @@ $('form').on('keyup keypress', function(e) {
       }
 
       function fillInAddress() {
-        console.log("fill in");
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
-        console.log(place);
 
         document.getElementById("lat").value = place.geometry.location.lat();
         document.getElementById("lng").value = place.geometry.location.lng();
         document.getElementById("placename").value = place.name;
-        console.log(place.geometry.location.lat());
-
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
 
@@ -102,7 +94,6 @@ $('form').on('keyup keypress', function(e) {
       // Bias the autocomplete object to the user's geographical location,
       // as supplied by the browser's 'navigator.geolocation' object.
       function geolocate() {
-        console.log("geolocate");
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var geolocation = {
